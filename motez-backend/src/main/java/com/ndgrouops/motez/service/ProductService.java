@@ -25,7 +25,6 @@ public class ProductService {
         return productRepository.findAll();
     }
     public List<Product> getProductByName(String name) {
-
         return productRepository.getProductByName(name);
     }
     public Optional<Product> updateProduct(Product product){
@@ -36,7 +35,6 @@ public class ProductService {
             existingProduct.setDescription((product.getDescription()));
             existingProduct.setPrice(product.getPrice());
             existingProduct.setImgUrl(product.getImgUrl());
-
 
             productRepository.save(existingProduct);
 

@@ -15,19 +15,24 @@ public class Product {
     private String description;
     private Double price;
     private String imgUrl;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
+    private String brand;
+    private Integer rating;
+    private Integer stock;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
     public Product() {
     }
 
-    public Product(String name, String description, Double price, String imgUrl) {
+    public Product(String name, String description, Double price, String imgUrl, String brand, Integer rating, Integer stock, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
+        this.brand = brand;
+        this.rating = rating;
+        this.stock = stock;
+        this.category = category;
     }
 
     public Integer getProductId() {
@@ -66,6 +71,37 @@ public class Product {
         this.imgUrl = imgUrl;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     @Override
     public boolean equals(Object o) {

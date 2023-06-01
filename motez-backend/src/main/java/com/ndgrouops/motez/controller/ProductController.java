@@ -17,16 +17,19 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
+    public ResponseEntity<?> createProduct(@RequestBody Product product) {
+        Product newProduct = productService.createProduct(product);
+        return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
-    public Optional<Product> getOneProduct(@PathVariable Integer id) {
-        return productService.getOneProduct(id);
+    public ResponseEntity<Product> getOneProduct(@PathVariable Integer id) {
+        Optional<Product> optProduct = productService.getOneProduct(id);
+        return new ResponseEntity<Product>(optProduct.get(), HttpStatus.OK);
     }
     @GetMapping
-    public List<Product> getAllProduct(){
-        return productService.getAllProducts();
+    public ResponseEntity<?> getAllProduct(){
+        List<Product> allProducts = productService.getAllProducts();
+        return new ResponseEntity<List<Product>>(allProducts, HttpStatus.OK);
     }
     @GetMapping("/search")
     public ResponseEntity<?> getProductByName(@RequestParam(name = "item") String item){

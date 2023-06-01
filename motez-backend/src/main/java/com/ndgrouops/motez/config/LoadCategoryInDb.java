@@ -19,8 +19,8 @@ public class LoadCategoryInDb implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception{
-        Category category1 = new Category("mike", "desc", "img link");
-        Category category2 = new Category("mele", "desciption", "img url");
+        Category category1 = new Category("mike", "desc");
+        Category category2 = new Category("mele", "desciption");
 
         List<Category>catlist = Arrays.asList(category1, category2);
         catlist = catlist.stream().collect(Collectors.toList());

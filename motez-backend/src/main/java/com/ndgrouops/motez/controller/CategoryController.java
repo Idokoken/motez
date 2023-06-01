@@ -19,31 +19,27 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<?> createCategory(@RequestBody Category category){
-//        if(Objects.nonNull(categoryService.getCategoryByName(category.getCategoryName()))){
-//            return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category already created"), HttpStatus.CREATED);
-//        }
-//        categoryService.createCategory(category);
-//        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "category successfully created"), HttpStatus.CREATED);
-          categoryService.createCategory(category);
-          return new ResponseEntity<Void>(HttpStatus.CREATED);
+          Category newCategory = categoryService.createCategory(category);
+          return new ResponseEntity<Category>(newCategory, HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
-    public Optional<Category> getOneCategory(@PathVariable Integer id) {
-       return categoryService.getOneCategory(id);
+    public ResponseEntity<?> getOneCategory(@PathVariable Integer id) {
+        Optional<Category> category = categoryService.getOneCategory(id);
+        return new ResponseEntity<Category>(category.get(), HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<List<Category>>  getAllCategory(){
-
         List<Category> allCategory =  categoryService.getAllCategory();
         return new ResponseEntity<List<Category>>(allCategory, HttpStatus.OK);
     }
     @PutMapping
-    public Category updateCategory(Category category) {
-         Optional<Category>  optCategory = categoryService.updateCategory(category);
-         return optCategory.get();
+    public ResponseEntity<?> updateCategory(@RequestBody Category category) {
+        Optional<Category> updatedCategory =  categoryService.updateCategory(category);
+        return new ResponseEntity<Category>(updatedCategory.get(), HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteCategory(@PathVariable Integer id) {
         categoryService.deleteCategory(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 }
