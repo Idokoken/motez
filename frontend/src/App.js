@@ -10,6 +10,10 @@ import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import Products from "./components/Products";
 import SingleProduct from "./components/SingleProduct";
+import AdminDashboard from "./admin/AdminDashboard";
+import AddUsers from "./admin/user/AddUsers";
+import EditUser from "./admin/user/EditUser";
+import UserDashboard from "./admin/user/UserDashboard";
 
 function App() {
   return (
@@ -22,6 +26,11 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<CartPage />} />
+
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/user/create" element={<AddUsers />} />
+        <Route path="/user/edit/:id" element={<EditUser />} />
+        <Route path="/user/:id" element={<UserDashboard />} />
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

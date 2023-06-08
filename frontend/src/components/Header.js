@@ -3,10 +3,21 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
 const Wrapper = styled.div`
+  font-family: "Roboto", sans-serif;
+
+  .bg-light {
+    background-color: var(--secondary-color) !important;
+    box-shadow: 5px 5px 10px 5px #eee6e6;
+  }
   .navbar-brand {
     margin-bottom: 4px !important;
     font-weight: 700;
-    font-family: "Times New Roman", Times, serif;
+    color: var(--primary-color);
+  }
+
+  .nav-link {
+    color: var(--primary-color);
+    font-weight: 600;
   }
   .nav-link:active {
     background-color: #50a !important;
@@ -31,14 +42,14 @@ function Header() {
           </button>
           <Link className="navbar-brand" to="/">
             <img
-              src="/assets/brand.png"
+              src="/images/brand.png"
               alt=""
               width="30"
               height="30"
               className="d-inline-block align-text-top"
-              style={{ borderRadius: "50%" }}
+              style={{ borderRadius: "50%", marginRight: "10px" }}
             />
-            chimi
+            motez
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -55,13 +66,18 @@ function Header() {
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
+                <NavLink className="nav-link" to="/admin">
+                  Admin
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
-                  Sign In
+                  signin
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/register">
-                  Sign Up
+                  signup
                 </NavLink>
               </li>
             </ul>

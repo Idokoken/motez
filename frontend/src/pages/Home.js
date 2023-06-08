@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Tablet } from "../Responsive";
 
 const Wrapper = styled.div`
   min-height: 50vh;
+
+  .admin {
+    display: flex;
+    justify-content: end;
+  }
+
+  a {
+    color: white;
+  }
 `;
 
 function Home() {
@@ -26,9 +36,14 @@ function Home() {
 
   return (
     <Wrapper>
-      <div classname="container">
+      <div className="container">
         <h2>Welcome to Motez</h2>
-        <h4>Get the best and latest products here </h4>
+        <h4>Get the best and latest products here</h4>
+        <div className="admin">
+          <Link to="/admin" className="btn btn-info">
+            Admin Page
+          </Link>
+        </div>
       </div>
     </Wrapper>
   );
