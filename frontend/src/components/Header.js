@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   font-family: "Roboto", sans-serif;
 
   .bg-light {
-    background-color: var(--secondary-color) !important;
+    background-color: var(--background-color) !important;
     box-shadow: 5px 5px 10px 5px #eee6e6;
   }
   .navbar-brand {
@@ -19,12 +19,16 @@ const Wrapper = styled.div`
     color: var(--primary-color);
     font-weight: 600;
   }
-  .nav-link:active {
+  /* .nav-link:active {
+    color: red;
     background-color: #50a !important;
-  }
+  } */
 `;
 
 function Header() {
+  const activeStyle = {
+    color: "purple",
+  };
   return (
     <Wrapper>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -54,12 +58,21 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/products">
+                <NavLink
+                  className="nav-link"
+                  to="/products"
+                  activeStyle={activeStyle}
+                >
                   Products
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/cart">
+                <NavLink
+                  className="nav-link"
+                  activeStyle={activeStyle}
+                  exact
+                  to="/cart"
+                >
                   ShoopingCart
                 </NavLink>
               </li>

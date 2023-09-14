@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Tablet } from "../Responsive";
+// import { Tablet } from "../Responsive";
 
 const Wrapper = styled.div`
   min-height: 50vh;

@@ -3,8 +3,6 @@ package com.ndgrouops.motez.service;
 import com.ndgrouops.motez.model.Product;
 import com.ndgrouops.motez.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +31,12 @@ public class ProductService {
             Product existingProduct = optProduct.get();
             existingProduct.setName(product.getName());
             existingProduct.setDescription((product.getDescription()));
+            existingProduct.setCategory(product.getCategory());
+            existingProduct.setBrand(product.getBrand());
             existingProduct.setPrice(product.getPrice());
+            existingProduct.setRating(product.getRating());
+            existingProduct.setCountInStock(product.getCountInStock());
+            existingProduct.setNumReviews(product.getNumReviews());
             existingProduct.setImgUrl(product.getImgUrl());
 
             productRepository.save(existingProduct);
